@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Hammersmith+One&family=Kufam:ital,wght@0,400..900;1,400..900&display=swap');
+
+
+.home {
+    background-color: #181e2a;
+    height: 100vh;
+}
+
+.home-grid {
+    width: 85%;
+    margin: 0 auto;
+    padding-top: 150px;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+}
+
+
+
+.home-text {
+}
+
+
+.home-hero {
+    display: flex;
+    justify-content: center;
+}
+
+.hero-logo {
+    max-width: 500px;
+    max-height: 500px;
+    height: 100%;
+    width: 100%;
+}
+
+
+
+.title {
+    margin-left: 20px;
+    color: white;
+    font-size: clamp(4rem,3vw,7rem);
+    font-family: "Kufam", sans-serif;
+    font-weight: 800;
+
+}
+
+.subtitle {
+    margin-left: 20px;
+    color: white;
+    font-size: clamp(0.8rem,3vw,1.2rem);
+    font-family: "Kufam", sans-serif;
+    max-width: 600px;
+
+}
+
+   
+
+

@@ -1,0 +1,32 @@
+/*SlideUp Animation*/
+
+.slideUpNone {
+    opacity: 0;
+    transform: translateY(20%);
+    transition: ease-in-out 1.5s;
+  }
+  
+  .slideUp {
+    opacity: 1;
+    transform: translateY(0);
+  
+  
+  }
+
+  /*SlideLeft Animation*/
+
+
+  .slideLeftNone {
+    opacity: 0;
+    transform: translateX(-20%);
+    transition: ease-in-out 1.5s;
+  }
+  
+  .slideLeft {
+    opacity: 1;
+    transform: translateY(0);
+  
+  
+  }
+  
+  

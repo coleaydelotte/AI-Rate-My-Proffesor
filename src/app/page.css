@@ -3,7 +3,8 @@
 
 .home {
     background-color: #1c222f;
-    height: 100vh;
+    height: 100%;
+    padding-bottom: 200px;
 }
 
 .home-grid {

@@ -4,6 +4,9 @@ import './bot.css'
 import { useEffect } from 'react';
 import Link from "next/link";
 import heroLogo from '../assets/herologo.png'
+import { ChatCentered } from 'phosphor-react';
+
+
 
 
 
@@ -31,7 +34,12 @@ export default function Home() {
         
 
       </div>
-      <input className="inputLabel" placeholder="Enter Message Here" />
+      <div className="inputLabel">
+      <input  placeholder="Enter Message Here"/>
+      <ChatCentered size={32} color="white"/>
+      </div>
+
+
     </div>
   );
 }

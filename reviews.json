@@ -1,0 +1,125 @@
+{
+    "reviews": [
+      {
+        "professor": "Dr. Emily Johnson",
+        "subject": "Calculus I",
+        "stars": 4,
+        "review": "Dr. Johnson explains concepts clearly and is always available for extra help."
+      },
+      {
+        "professor": "Prof. Michael Smith",
+        "subject": "Introduction to Psychology",
+        "stars": 5,
+        "review": "Prof. Smith makes the lectures engaging and easy to understand."
+      },
+      {
+        "professor": "Dr. Sarah Lee",
+        "subject": "Organic Chemistry",
+        "stars": 3,
+        "review": "The course is tough, but Dr. Lee is very knowledgeable."
+      },
+      {
+        "professor": "Prof. David Brown",
+        "subject": "World History",
+        "stars": 2,
+        "review": "The lectures are a bit dry, but the material is interesting."
+      },
+      {
+        "professor": "Dr. Laura Miller",
+        "subject": "Introduction to Sociology",
+        "stars": 4,
+        "review": "Dr. Miller is passionate about the subject and encourages class discussions."
+      },
+      {
+        "professor": "Prof. John Davis",
+        "subject": "Physics II",
+        "stars": 5,
+        "review": "Prof. Davis is an excellent teacher who makes complex topics simple."
+      },
+      {
+        "professor": "Dr. Robert Wilson",
+        "subject": "Microeconomics",
+        "stars": 3,
+        "review": "Dr. Wilson's lectures are informative, but the exams are challenging."
+      },
+      {
+        "professor": "Prof. Linda Thompson",
+        "subject": "English Literature",
+        "stars": 4,
+        "review": "Prof. Thompson brings the texts to life and encourages critical thinking."
+      },
+      {
+        "professor": "Dr. James White",
+        "subject": "Linear Algebra",
+        "stars": 2,
+        "review": "The course content is difficult, and Dr. White's explanations can be unclear at times."
+      },
+      {
+        "professor": "Prof. Karen Harris",
+        "subject": "Environmental Science",
+        "stars": 5,
+        "review": "Prof. Harris is passionate about the environment and makes the class exciting."
+      },
+      {
+        "professor": "Dr. Brian Clark",
+        "subject": "Computer Science I",
+        "stars": 3,
+        "review": "Dr. Clark is knowledgeable, but the coursework is demanding."
+      },
+      {
+        "professor": "Prof. Nancy Lewis",
+        "subject": "Statistics",
+        "stars": 4,
+        "review": "Prof. Lewis explains statistical concepts well and is very approachable."
+      },
+      {
+        "professor": "Dr. George Young",
+        "subject": "Macroeconomics",
+        "stars": 3,
+        "review": "The lectures are detailed, but Dr. Young's teaching style can be dry."
+      },
+      {
+        "professor": "Prof. Barbara Adams",
+        "subject": "Introduction to Philosophy",
+        "stars": 4,
+        "review": "Prof. Adams encourages deep thinking and class participation."
+      },
+      {
+        "professor": "Dr. Richard Scott",
+        "subject": "Biology I",
+        "stars": 5,
+        "review": "Dr. Scott is enthusiastic about the subject and makes learning fun."
+      },
+      {
+        "professor": "Prof. Susan Green",
+        "subject": "Art History",
+        "stars": 3,
+        "review": "Prof. Green is knowledgeable, but the lectures can be monotonous."
+      },
+      {
+        "professor": "Dr. Kevin King",
+        "subject": "Introduction to Ethics",
+        "stars": 4,
+        "review": "Dr. King is engaging and makes the material relatable."
+      },
+      {
+        "professor": "Prof. Jessica Perez",
+        "subject": "Marketing 101",
+        "stars": 5,
+        "review": "Prof. Perez is a great teacher who brings real-world examples into the classroom."
+      },
+      {
+        "professor": "Dr. Steven Martinez",
+        "subject": "Human Anatomy",
+        "stars": 3,
+        "review": "The material is complex, but Dr. Martinez does his best to explain it clearly."
+      },
+      {
+        "professor": "Prof. Laura Walker",
+        "subject": "Public Speaking",
+        "stars": 4,
+        "review": "Prof. Walker is supportive and helps students build confidence in speaking."
+      }
+    ]
+  }
+  

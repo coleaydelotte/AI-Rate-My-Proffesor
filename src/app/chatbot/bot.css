@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Hammersmith+One&family=Kufam:ital,wght@0,400..900;1,400..900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Hammersmith+One&family=Kufam:ital,wght@0,400..900;1,400..900&display=swap');
+
+
+.bot {
+    margin: 0 auto;
+    background-color: #1c222f;
+    padding-top: 50px;
+    padding-bottom: 200px;
+        font-family: "Kufam", sans-serif;
+
+}
+
+.bot-title {
+    color: white;
+    text-align: center;
+}
+
+.bot-text-container {
+    max-width: 700px;
+    max-height: 600px;
+    height: 100%;
+    width: 85%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+  .bot-text-container h2 {
+    font-size: clamp(.5rem,4vw,1rem);
+  }
+  
+  .bot-text, .person-text {
+    max-width: 90%;
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 10px;
+  }
+  
+  .bot-text {
+    align-self: flex-start;
+    background-color: #005f99;
+    color: white;
+  }
+  
+  .person-text {
+    align-self: flex-end;
+    background-color: #2b3448;
+    color: white;
+  }
+
+
+
+
+
+.inputLabel {
+    background-color: #242e43;
+
+    max-width: 900px;
+    animation: fadeIn 4s ease-in-out;
+    width: 70%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    height: 40px;
+    border: solid 1px rgba(255, 255, 255, 0.343);
+    border-radius: 20px;
+    padding-left: 20px;
+    font-family: "Kufam", sans-serif;
+    color: white;
+
+
+}
+
+
+
+
+

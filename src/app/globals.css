@@ -1,8 +1,7 @@
 /*SlideUp Animation*/
 
-* {
-    background-color: #1c222f;
-
+body {
+  background-color: #1c222f;
 }
 
 .slideUpNone {

@@ -3,6 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Hammersmith+One&family=Kufam:ital,wght@0,400..900;1,400..900&display=swap');
 
 
+
 .bot {
     margin: 0 auto;
     background-color: #1c222f;
@@ -18,7 +19,7 @@
 }
 
 .bot-text-container {
-    max-width: 700px;
+    max-width: 900px;
     max-height: 650px;
     height: 100%;
     width: 85%;
@@ -92,6 +93,8 @@
     font-family: "Kufam", sans-serif;
     color: white;
     border: none;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
 
 
 }

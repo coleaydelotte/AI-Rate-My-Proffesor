@@ -10,10 +10,14 @@
 .home-grid {
     width: 85%;
     margin: 0 auto;
-    padding-top: 150px;
     display: grid;
     grid-template-columns: repeat(2,1fr);
     max-width: 1400px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
 }
 
 
@@ -52,6 +56,18 @@
     font-family: "Kufam", sans-serif;
     max-width: 600px;
 
+}
+
+
+@media screen and (max-width: 1173px) {
+
+    .home-grid {
+        grid-template-columns: repeat(1,1fr);
+
+    }
+
+    
+    
 }
 
 

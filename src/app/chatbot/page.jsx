@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import Link from "next/link";
 import heroLogo from '../assets/herologo.png'
 import { ChatCentered } from 'phosphor-react';
+import slideFromLeft from "../animations/slideFromLeft";
 
 
 
@@ -12,11 +13,12 @@ import { ChatCentered } from 'phosphor-react';
 
 export default function Home() {
 
+  slideFromLeft()
+
 
 
   return (
     <div className="bot">
-      <h1 className="bot-title">Professor Bot</h1>
       <div className="bot-text-container">
       <div class="bot-text"><h2>Bot: Hi there! How can I assist you today?</h2></div>
   <div class="person-text"><h2>Person: I'm looking for a good recipe for chocolate chip cookies. Do you have any suggestions?</h2></div>

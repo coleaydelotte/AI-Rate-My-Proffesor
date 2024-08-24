@@ -55,7 +55,7 @@ export async function POST(req) {
         encoding_format: 'float',
     })
     const results = await index.query({
-        top_k: 5,
+        topK: 3,
         includeMetadata: true,
         vector: embedding.data[0].embedding,
     })
@@ -74,9 +74,9 @@ export async function POST(req) {
     });
 
     const lastMessage = data[data.length - 1]
-    lastMessageContent = lastMessage.content + resultString
-    lastDataWithoutLastMessage = data.slice(0, data.length - 1)
-    const completion = await openAi.create({
+    const lastMessageContent = lastMessage.content + resultString
+    const lastDataWithoutLastMessage = data.slice(0, data.length - 1)
+    const completion = await openAi.chat.completions.create({
         messages: [
             {role: 'system', content: systemPrompt},
             ...lastDataWithoutLastMessage,
@@ -86,7 +86,7 @@ export async function POST(req) {
         stream: true,
     })
 
-    const stream = ReadableStream({
+    const stream = new ReadableStream({
         async start(controller){
             const encoder = new TextEncoder();
             try {

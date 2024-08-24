@@ -1,9 +1,11 @@
 import { NextResponse } from "next/server";
 import { Pinecone } from "@pinecone-database/pinecone";
+import { OpenAI } from 'openai'
 
-const { GoogleGenerativeAI } = require("@google/generative-ai");
-const api_key = process.env.GEMINI_API_KEY
-const genAI = new GoogleGenerativeAI(api_key);
+const api_key = process.env.OPEN_AI_API_KEY
+if (!api_key) {
+    throw new Error('API key is required')
+}
 const systemPrompt =
 `
 You are a highly skilled assistant for the "Rate My Professor" application. Your task is to help students find the best professors based on their queries. When a user asks a question about finding a professor, you should:
@@ -45,27 +47,30 @@ export async function POST(req) {
         apiKey: process.env.PINECONE_API_KEY,
     });
     const index = pc.index('rag').namespace('ns1')
-    const embedModel = genAI.getGenerativeModel({ model: "text-embedding-004"});
+    const openAi = new OpenAI({apiKey: api_key});
     const text = data[data.length - 1].content;
-    const response = embedModel.embedContent(text);
-    const embedding = response.embedding;
+    const embedding = await openAi.embeddings.create({
+        model: 'text-embedding-3-small',
+        input: text,
+        encoding_format: 'float',
+    })
     const results = await index.query({
-      topK: 3,
-      includeMetadata: true,
-      vector: embedding,
-    });
+        top_k: 5,
+        includeMetadata: true,
+        vector: embedding.data[0].embedding,
+    })
 
-    let resultString = '\n\nReturned Results from vector db (done automatically): ';
-    results.matches.forEach(match => {
+    let resultString = 'Returned results: '
+    results.matches.forEach((match) => {
         resultString += `
         \n
         professor: ${match.metadata.professor}
-        review: ${match.metadata.review}
+        Review: ${match.metadata.review}
         Subject: ${match.metadata.subject}
         Stars: ${match.metadata.stars}
         \n
         \n
-        `;
+        `
     });
 
     const lastMessage = data[data.length - 1]

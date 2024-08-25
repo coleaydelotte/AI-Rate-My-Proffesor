@@ -1,14 +1,10 @@
 'use client'
 import Image from "next/image";
 import './bot.css'
-import { useEffect } from 'react';
 import { useState } from 'react';
-import Link from "next/link";
-import heroLogo from '../assets/herologo.png'
-import { ChatCentered } from 'phosphor-react';
 import slideFromLeft from "../animations/slideFromLeft";
-import { Stream } from "openai/streaming";
-import { Box, Button, TextField, Stack } from "@mui/material";
+import { MuiMarkdown } from 'mui-markdown';
+import { Box, Button, TextField, Stack, Typography, GlobalStyles } from "@mui/material";
 
 
 export default function Home() {
@@ -80,6 +76,7 @@ export default function Home() {
     // </div>
 
     <Box
+    bgcolor={"#1c222f"}
       width='100vw'
       height='100vh'
       display='flex'
@@ -87,11 +84,27 @@ export default function Home() {
       justifyContent='center'
       alignItems='center'
     >
+      <GlobalStyles
+        styles={{
+          '*::-webkit-scrollbar': {
+            width: '0.4em',
+            borderRadius: '4px',
+          },
+          '*::-webkit-scrollbar-track': {
+            '-webkit-box-shadow': 'inset 0 0 6px rgba(0,0,0,0.00)',
+          },
+          '*::-webkit-scrollbar-thumb': {
+            backgroundColor: 'rgba(0,0,0,.1)',
+            outline: '1px solid slategrey',
+          },
+        }}
+      />
       <Stack
         direction='column'
         width='500px'
         height='700px'
-        border='1px solid black'
+        border='1px solid White'
+        borderRadius={4}
         p={2}
         spacing={3}
       >
@@ -110,11 +123,15 @@ export default function Home() {
               justifyContent={messages.role === 'assistant' ? 'flex-start' : 'flex-end'}
             >
               <Box
-                bgcolor={messages.role === 'assistant' ? 'primary.main' : 'secondary.main'}
+                bgcolor={messages.role === 'assistant' ? '#a020f0' : '#0000ff'}
                 color='white'
                 borderRadius={4}
               >
-                {messages.content}
+                <Box padding={2}>
+                  <MuiMarkdown>
+                    {messages.content}
+                  </MuiMarkdown>
+                </Box>
               </Box>
             </Box>
           ))
@@ -129,6 +146,25 @@ export default function Home() {
             fullWidth
             value={message}
             onChange={(e) => setMessage(e.target.value)}
+            sx={{
+              '& .MuiOutlinedInput-root': {
+                '& fieldset': {
+                  borderColor: 'white', // Default border color
+                },
+                '&:hover fieldset': {
+                  borderColor: 'white', // Border color on hover
+                },
+                '&.Mui-focused fieldset': {
+                  borderColor: 'white', // Border color when focused
+                },
+              },
+              '& .MuiInputLabel-root': {
+                color: 'white', // Label color
+              },
+              '& .MuiInputBase-input': {
+                color: 'white', // Text color
+              },
+            }}
           />
           <Button
             variant='contained'

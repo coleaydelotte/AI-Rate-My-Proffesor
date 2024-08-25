@@ -15,10 +15,14 @@
     "@mui/material": "^5.16.7",
     "@pinecone-database/pinecone": "^3.0.0",
     "app": "file:",
+    "mui-markdown": "^1.2.1",
     "next": "14.2.5",
     "openai": "^4.56.0",
     "phosphor-react": "^1.4.1",
     "react": "^18",
     "react-dom": "^18"
+  },
+  "devDependencies": {
+    "typescript": "5.5.4"
   }
 }

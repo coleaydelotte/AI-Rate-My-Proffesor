@@ -3,8 +3,12 @@ import Image from "next/image";
 import './bot.css'
 import { useState } from 'react';
 import slideFromLeft from "../animations/slideFromLeft";
+import slideUp from "../animations/slideUp";
 import { MuiMarkdown } from 'mui-markdown';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+
 import { Box, Button, TextField, Stack, Typography, GlobalStyles } from "@mui/material";
+import Navbar from "../navbar";
 
 
 export default function Home() {
@@ -12,40 +16,40 @@ export default function Home() {
   const [messages, setMessages] = useState([
     {
       role: 'assistant',
-      content: "Hi! I'm the rate my Professor support assistant. How can I help you today?",  
+      content: "Hi! I'm the rate my Professor support assistant. How can I help you today?",
     }
   ])
   const [message, setMessage] = useState('')
   const sendMessage = async () => {
     setMessages((messages) => [
       ...messages,
-      {role: 'user', content: message},
-      {role: 'assistant', content: ''}
+      { role: 'user', content: message },
+      { role: 'assistant', content: '' }
     ])
     setMessage('')
-  
+
     const response = await fetch('/api/chat', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify([...messages, {role: 'user', content: message}])
+      body: JSON.stringify([...messages, { role: 'user', content: message }])
     }).then(async (res) => {
       const reader = res.body.getReader()
       const decoder = new TextDecoder()
-  
+
       let result = ''
-      return reader.read().then(function processText({done, value}) {
+      return reader.read().then(function processText({ done, value }) {
         if (done) {
           return result
         }
-        const text = decoder.decode(value || new Uint8Array(), {stream: true})
+        const text = decoder.decode(value || new Uint8Array(), { stream: true })
         setMessages((messages) => {
           let lastMessage = messages[messages.length - 1]
           let otherMessages = messages.slice(0, messages.length - 1)
           return [
             ...otherMessages,
-            {...lastMessage, content: lastMessage.content + text}
+            { ...lastMessage, content: lastMessage.content + text }
           ]
         })
         return reader.read().then(processText)
@@ -54,6 +58,21 @@ export default function Home() {
   }
 
   slideFromLeft()
+  slideUp()
+
+  const darkTheme = createTheme({
+    palette: {
+      mode: 'dark',
+      primary: {
+        main: '#a020f0',
+      },
+      background: {
+        default: '#1c222f',
+        paper: '#252b3b',
+      },
+    },
+  });
+
 
   return (
     // <div className="bot">
@@ -75,105 +94,108 @@ export default function Home() {
     //   </div>
     // </div>
 
-    <Box
-    bgcolor={"#1c222f"}
-      width='100vw'
-      height='100vh'
-      display='flex'
-      flexDirection='column' 
-      justifyContent='center'
-      alignItems='center'
-    >
-      <GlobalStyles
-        styles={{
-          '*::-webkit-scrollbar': {
-            width: '0.4em',
-            borderRadius: '4px',
-          },
-          '*::-webkit-scrollbar-track': {
-            '-webkit-box-shadow': 'inset 0 0 6px rgba(0,0,0,0.00)',
-          },
-          '*::-webkit-scrollbar-thumb': {
-            backgroundColor: 'rgba(0,0,0,.1)',
-            outline: '1px solid slategrey',
-          },
+
+    <ThemeProvider theme={darkTheme}>
+      <Box
+        sx={{
+          bgcolor: 'background.default',
+          width: '100vw',
+          height: '100vh',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
         }}
-      />
-      <Stack
-        direction='column'
-        width='500px'
-        height='700px'
-        border='1px solid White'
-        borderRadius={4}
-        p={2}
-        spacing={3}
       >
+        <Navbar/>
+        <GlobalStyles
+          styles={{
+            '*::-webkit-scrollbar': {
+              width: '0.4em',
+              borderRadius: '4px',
+            },
+            '*::-webkit-scrollbar-track': {
+              '-webkit-box-shadow': 'inset 0 0 6px rgba(0,0,0,0.00)',
+            },
+            '*::-webkit-scrollbar-thumb': {
+              backgroundColor: 'rgba(255,255,255,0.1)',
+              borderRadius: '4px',
+            },
+          }}
+        />
         <Stack
-          direction='column'
-          spacing={2}
-          flexGrow={1}
-          overflow='auto'
-          maxHeight="100%"
+        className="slideUpNone"
+          direction="column"
+          width="90%"
+          maxWidth="600px"
+          height="80vh"
+          bgcolor="background.paper"
+          borderRadius={4}
+          boxShadow={3}
+          p={3}
+          spacing={3}
         >
-        {
-          messages.map((messages, index) => (
-            <Box
-              key={index}
-              display='flex'
-              justifyContent={messages.role === 'assistant' ? 'flex-start' : 'flex-end'}
-            >
+          <Stack
+            direction="column"
+            spacing={2}
+            flexGrow={1}
+            overflow="auto"
+            sx={{
+              '&::-webkit-scrollbar': {
+                display: 'none',
+              },
+              scrollbarWidth: 'none',
+            }}
+          >
+            {messages.map((message, index) => (
               <Box
-                bgcolor={messages.role === 'assistant' ? '#a020f0' : '#0000ff'}
-                color='white'
-                borderRadius={4}
+                key={index}
+                display="flex"
+                justifyContent={message.role === 'assistant' ? 'flex-start' : 'flex-end'}
               >
-                <Box padding={2}>
-                  <MuiMarkdown>
-                    {messages.content}
-                  </MuiMarkdown>
+                <Box
+                  bgcolor={message.role === 'assistant' ? 'primary.main' : 'info.main'}
+                  color="white"
+                  borderRadius={2}
+                  maxWidth="70%"
+                >
+                  <Box p={1.5}>
+                    <MuiMarkdown>{message.content}</MuiMarkdown>
+                  </Box>
                 </Box>
               </Box>
-            </Box>
-          ))
-        }
+            ))}
+          </Stack>
+          <Stack direction="row" spacing={2}>
+            <TextField
+              label="Message"
+              fullWidth
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              variant="outlined"
+              sx={{
+                '& .MuiOutlinedInput-root': {
+                  '& fieldset': {
+                    borderColor: 'rgba(255, 255, 255, 0.23)',
+                  },
+                  '&:hover fieldset': {
+                    borderColor: 'rgba(255, 255, 255, 0.4)',
+                  },
+                },
+              }}
+            />
+            
+              <Button
+                variant='contained'
+                onClick={sendMessage}
+              >
+                Send
+              </Button>            
+          </Stack>
         </Stack>
-        <Stack
-          direction='row'
-          spacing={2}
-        >
-          <TextField
-            label="Message"
-            fullWidth
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-            sx={{
-              '& .MuiOutlinedInput-root': {
-                '& fieldset': {
-                  borderColor: 'white', // Default border color
-                },
-                '&:hover fieldset': {
-                  borderColor: 'white', // Border color on hover
-                },
-                '&.Mui-focused fieldset': {
-                  borderColor: 'white', // Border color when focused
-                },
-              },
-              '& .MuiInputLabel-root': {
-                color: 'white', // Label color
-              },
-              '& .MuiInputBase-input': {
-                color: 'white', // Text color
-              },
-            }}
-          />
-          <Button
-            variant='contained'
-            onClick={sendMessage}
-          >
-            Send
-          </Button>
-        </Stack>
-      </Stack>
-    </Box>
+      </Box>
+    </ThemeProvider>
   );
 }
+
+

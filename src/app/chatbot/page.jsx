@@ -3,8 +3,10 @@ import Image from "next/image";
 import './bot.css'
 import { useState } from 'react';
 import slideFromLeft from "../animations/slideFromLeft";
+import slideUp from "../animations/slideUp";
 import { MuiMarkdown } from 'mui-markdown';
 import { Box, Button, TextField, Stack, Typography, GlobalStyles } from "@mui/material";
+import Navbar from "../navbar";
 
 
 export default function Home() {
@@ -54,6 +56,7 @@ export default function Home() {
   }
 
   slideFromLeft()
+  slideUp()
 
   return (
     // <div className="bot">
@@ -75,6 +78,7 @@ export default function Home() {
     //   </div>
     // </div>
 
+    
     <Box
     bgcolor={"#1c222f"}
       width='100vw'
@@ -84,6 +88,8 @@ export default function Home() {
       justifyContent='center'
       alignItems='center'
     >
+          <Navbar/>
+
       <GlobalStyles
         styles={{
           '*::-webkit-scrollbar': {
@@ -100,6 +106,8 @@ export default function Home() {
         }}
       />
       <Stack
+          className="slideUpNone" 
+
         direction='column'
         width='500px'
         height='700px'

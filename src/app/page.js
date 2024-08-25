@@ -7,6 +7,7 @@ import { useEffect } from 'react';
 import slideUp from "./animations/slideUp";
 import slideFromLeft from "./animations/slideFromLeft";
 import Link from "next/link";
+import Navbar from './navbar'
 
 
 
@@ -17,6 +18,7 @@ export default function Home() {
 
   return (
     <div className="home">
+      <Navbar/>
       <div className="home-grid">
 
         <div className="home-text slideLeftNone">

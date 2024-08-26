@@ -8,7 +8,7 @@ import { MuiMarkdown } from 'mui-markdown';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 import { Box, Button, TextField, Stack, Typography, GlobalStyles } from "@mui/material";
-import Navbar from "../navbar";
+import Navbar from "../Navbar";
 
 
 export default function Home() {

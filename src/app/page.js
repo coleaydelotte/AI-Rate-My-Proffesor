@@ -7,7 +7,7 @@ import { useEffect } from 'react';
 import slideUp from "./animations/slideUp";
 import slideFromLeft from "./animations/slideFromLeft";
 import Link from "next/link";
-import Navbar from './navbar'
+import Navbar from './Navbar'
 
 
 

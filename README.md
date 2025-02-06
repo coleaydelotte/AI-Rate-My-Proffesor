@@ -1,5 +1,7 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
+# AI Rate My Professor
+Authors:
+[Cole Aydelotte](https://github.com/coleaydelotte)
+[Francisco Figueroa](https://github.com/FranThe3rd)
 ## Getting Started
 
 First, run the development server:
@@ -10,6 +12,8 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+## Python Data Loader
+The script reads from a file called `reviews.json` and then embeds it using OpenAI API. The embeddings are then put into a Pinecone Namespace.
 ### If trying to load data to the database:
 cd into the load_db folder in the project root, and do the following command: `python -m venv venv` 
 if python is not already installed it can be installed [here](https://www.python.org/downloads/).
